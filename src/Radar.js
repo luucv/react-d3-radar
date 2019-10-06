@@ -38,8 +38,8 @@ function convertData(props) {
   });
 
   const allPoints = radarPoints(data, scales, offsetAngles);
-  const flatPointList = flatMapDeepArray(allPoints, ({points}) => {
-    return points;
+  const flatPointList = flatMapDeepArray(allPoints, ({currentPoints, previousPoints}) => {
+    return [...currentPoints, ...previousPoints];
   });
 
   const voronoiDiagram = voronoi()
